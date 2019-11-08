@@ -1,3 +1,5 @@
+package testes;
+
 public class InsertSort implements Runnable {
 
     public  int[] array;

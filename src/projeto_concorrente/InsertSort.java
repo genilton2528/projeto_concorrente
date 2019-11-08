@@ -6,8 +6,8 @@ package projeto_concorrente;
  */
 public class InsertSort implements Runnable {
 
-    private final int[] vector;
-    private final int max;
+    private int[] vector;
+    private int max;
     private int fist, last;
 
     public InsertSort(Numbers number) {
@@ -22,10 +22,13 @@ public class InsertSort implements Runnable {
         this.last = last;
     }
 
+    @Override
+    public void run() {
+        this.insertionSortThread();
+    }
+
     public void insertionSort() {
         int key, i, j;
-
-        //double startTime = System.currentTimeMillis();
 
         for (j = 1; j < this.max; j++) {
             key = this.vector[j];
@@ -34,12 +37,6 @@ public class InsertSort implements Runnable {
             }
             this.vector[i + 1] = key;
         }
-        //double endTime = System.currentTimeMillis();
-    }
-
-    @Override
-    public void run() {
-        this.insertionSortThread();
     }
 
     public void insertionSortThread() {
