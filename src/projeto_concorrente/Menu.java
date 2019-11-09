@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();    
-        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -83,6 +82,7 @@ public class Menu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void test1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_test1ActionPerformed
