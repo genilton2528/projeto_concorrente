@@ -20,6 +20,7 @@ public class Menu extends javax.swing.JFrame {
         test2 = new javax.swing.JButton();
         test1 = new javax.swing.JButton();
         cpu2 = new javax.swing.JLabel();
+        backup = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,6 +46,13 @@ public class Menu extends javax.swing.JFrame {
 
         cpu2.setText("CPU Bound:");
 
+        backup.setText("Backup");
+        backup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backupActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,13 +64,19 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(test2)
-                            .addComponent(test1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(cpu2)
-                                .addGap(114, 114, 114)
-                                .addComponent(cpu1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(test2)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cpu2)
+                                        .addGap(114, 114, 114)
+                                        .addComponent(cpu1)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(test1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(backup)
+                                .addGap(37, 37, 37)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -75,10 +89,12 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(cpu2)
                     .addComponent(cpu1))
                 .addGap(18, 18, 18)
-                .addComponent(test1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backup)
+                    .addComponent(test1))
                 .addGap(18, 18, 18)
                 .addComponent(test2)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,6 +121,19 @@ public class Menu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_test2ActionPerformed
 
+    private void backupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backupActionPerformed
+        JOptionPane.showMessageDialog( null, 
+                  "<html><ul><li>Nesse teste serão gerados varios arquivos.</li>"
+                + "<li>Os arquivos serão copiados de uma pasta para outra.</li>"
+                + "<li>A pasta onde os arquivos serão gerados podem ser especificadas pelo usuario.</li>"
+                + "<li>Por padrão os arquivos serão gerados no diretorio do projeto.</li>"
+                + "<li>Na parte onde se utiliza thread os arquivos serão divididos igualmente entre as threads.</li>"
+                + "<li>A quantidade de arquivos e de threads serão definidas pelo usuario.</li></ul></html>"
+                , "Informações", JOptionPane.INFORMATION_MESSAGE);
+        new Panel3().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_backupActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -123,6 +152,7 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backup;
     private javax.swing.JLabel cpu1;
     private javax.swing.JLabel cpu2;
     private javax.swing.JLabel jLabel1;
