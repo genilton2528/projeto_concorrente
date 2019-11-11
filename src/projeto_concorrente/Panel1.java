@@ -262,6 +262,7 @@ public class Panel1 extends javax.swing.JFrame {
         Thread[] threads = new Thread[qtdThreads];
         int fist = 0;
         int last = (this.sortNumbers.getMax() - 1) / qtdThreads;
+        int step = (this.sortNumbers.getMax() / qtdThreads);
 
         //Inicio
         if (this.insert.isSelected()) {
@@ -271,7 +272,7 @@ public class Panel1 extends javax.swing.JFrame {
                 threads[i] = new Thread(new InsertSort(fist, last, this.sortNumbers));
                 threads[i].start();
                 fist = last + 1;
-                last += (this.sortNumbers.getMax() / qtdThreads);
+                last += step;
             }
             for (int i = 0; i < qtdThreads; i++) {
                 try {

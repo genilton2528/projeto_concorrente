@@ -133,23 +133,7 @@ public class Panel3 extends javax.swing.JFrame {
         Target.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         Target.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
     }
-
-    public void copy(File src, File dst) throws IOException {
-        try {
-            InputStream in = new FileInputStream(src);
-            OutputStream out = new FileOutputStream(dst);           // Transferindo bytes de entrada para saída
-            byte[] buf = new byte[1024];
-            int len;
-            while ((len = in.read(buf)) > 0) {
-                out.write(buf, 0, len);
-            }
-            in.close();
-            out.close();
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -177,6 +161,8 @@ public class Panel3 extends javax.swing.JFrame {
         time1 = new javax.swing.JLabel();
         totalSerial = new javax.swing.JLabel();
         totalParallel = new javax.swing.JLabel();
+        QtdThreads = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -230,11 +216,6 @@ public class Panel3 extends javax.swing.JFrame {
         jScrollPane2.setViewportView(Source);
 
         qtdFiles.setText("1");
-        qtdFiles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                qtdFilesActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("de");
 
@@ -282,6 +263,10 @@ public class Panel3 extends javax.swing.JFrame {
 
         totalParallel.setText("Total: ");
 
+        QtdThreads.setText("2");
+
+        jLabel6.setText("Threads");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -309,10 +294,15 @@ public class Panel3 extends javax.swing.JFrame {
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(BackupParallel, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                                         .addComponent(BackupSerial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(time1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(time2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(BackupParallel, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                                        .addComponent(time2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(QtdThreads, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 0, Short.MAX_VALUE))))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(totalParallel)
@@ -349,28 +339,30 @@ public class Panel3 extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BackupSerial)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(time1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(QtdThreads)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BackupParallel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(time2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(totalSerial, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(totalParallel, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(clearSource, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(clearTarget, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(time2))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totalSerial, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(totalParallel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(clearSource, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clearTarget, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -382,10 +374,6 @@ public class Panel3 extends javax.swing.JFrame {
         new Menu().setVisible(true);
         dispose();
     }//GEN-LAST:event_MenuActionPerformed
-
-    private void qtdFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtdFilesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_qtdFilesActionPerformed
 
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
         try {
@@ -441,7 +429,36 @@ public class Panel3 extends javax.swing.JFrame {
         //Limpar a pasta de backup
         deleteFiles("Backup");
 
-        //Copiar os arquivos de source       
+        //Copiar e colar os arquivos de source em backup
+        File dirSource = new File(this.path + "Source");
+        File dirBackup = new File(this.path + "Backup");
+
+        if (!dirSource.exists()) {
+            dirSource.mkdirs();
+            return;
+        }
+        if (!dirBackup.exists()) {
+            dirSource.mkdirs();
+        }
+
+        startTime = System.currentTimeMillis(); // Inicio
+        File[] files = dirSource.listFiles();
+        new Files( 0, files.length-1, files, dirSource, dirBackup).backupFiles();
+        endTime = System.currentTimeMillis(); // Fim
+
+        this.time1.setText("Tempo: " + (endTime - startTime) + "ms");
+        System.out.println("Tempo Sequencial: " + (endTime - startTime) + "ms");
+        this.refresh();
+    }//GEN-LAST:event_BackupSerialActionPerformed
+
+    private void BackupParallelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackupParallelActionPerformed
+        double startTime, endTime;
+        int qtdThreads = Convert.converteInt(this.QtdThreads.getText());
+        
+        //Limpar a pasta de backup
+        deleteFiles("Backup");
+
+        //Copiar e colar os arquivos de source em backup
         File dirSource = new File(this.path + "Source");
         File dirBackup = new File(this.path + "Backup");
 
@@ -454,34 +471,39 @@ public class Panel3 extends javax.swing.JFrame {
         }
 
         File[] files = dirSource.listFiles();
+        Thread[] threads = new Thread[qtdThreads];
+        int fist = 0;
+        int step = (files.length) / qtdThreads;
+        int last = (files.length - 1) / qtdThreads;
+        
+        startTime = System.currentTimeMillis(); // Inicio
 
-        //Cola em Backup
-        startTime = System.currentTimeMillis();
-        for (File fileSource : files) {
-            try {
-                File fileDest = new File(dirBackup.getAbsolutePath() + File.separator + fileSource.getName());
-                fileDest.createNewFile();
-                this.copy(fileSource, fileDest);
-
-            } catch (IOException ex) {
-                System.err.println(ex.getMessage());
+            for (int i = 0; i < qtdThreads; i++) {
+                threads[i] = new Thread(new Files( fist, last, files, dirSource, dirBackup));
+                threads[i].start();
+                fist = last + 1;
+                last += step;
             }
-        }
-        endTime = System.currentTimeMillis();
+            for (int i = 0; i < qtdThreads; i++) {
+                try {
+                    threads[i].join();
+                } catch (InterruptedException ex) {
+                    System.err.println(ex.getMessage());
+                }
+            }                              
 
-        this.time1.setText("Tempo: " + (endTime - startTime) + "ms");
-        System.out.println("Tempo Sequencial: " + (endTime - startTime) + "ms");
+        endTime = System.currentTimeMillis(); // Fim
+
+        this.time2.setText("Tempo: " + (endTime - startTime) + "ms");
+        System.out.println("Tempo Concorrente: " + (endTime - startTime) + "ms");
         this.refresh();
-    }//GEN-LAST:event_BackupSerialActionPerformed
-
-    private void BackupParallelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackupParallelActionPerformed
-
     }//GEN-LAST:event_BackupParallelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackupParallel;
     private javax.swing.JButton BackupSerial;
     private javax.swing.JButton Menu;
+    private javax.swing.JTextField QtdThreads;
     private javax.swing.JTable Source;
     private javax.swing.JTable Target;
     private javax.swing.JButton clearSource;
@@ -492,6 +514,7 @@ public class Panel3 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar jToolBar1;
