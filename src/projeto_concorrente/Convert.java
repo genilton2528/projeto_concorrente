@@ -100,5 +100,19 @@ public class Convert
     {
         s = s.trim();
         return !(s.equals("false") || s.contains("false"));
+    }        
+    
+    public static int returnNumbers(String str){
+        String aux = "";
+        char [] letters = str.toCharArray();
+        
+        for(int i = 0; i < letters.length; i++){
+            if(letters[i] == '.'){
+                break;
+            }
+            aux += letters[i];
+        }
+        
+        return Convert.converteInt(aux);
     }
 }
